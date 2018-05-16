@@ -8,11 +8,17 @@ const Copy = styled.span`
 `;
 
 export default class Copyright extends Component {
+    constructor() {
+        super();
+        this.state = {
+            date: new Date()
+        };
+    }
 
     render() {
 
         return (
-            <Copy>&copy; 2018 GrocerLy</Copy>
+            <Copy>&copy; {this.state.date.getFullYear()} GrocerLy</Copy>
         );
     }
 }
