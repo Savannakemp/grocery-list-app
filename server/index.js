@@ -25,7 +25,15 @@ massive(process.env.CONNECTION_STRING).then(db => {
     console.log('massive error', error);
 });
 
-//code goes here
+app.get('/api/addNewListItem', (req, res) => {
+    const {listItem} = req.body;
+    req.app.get('db').add_new_list_item([listItem]).then(response => {
+        res.status(200).send;
+    }).catch(error => {
+        console.log('error at addNewListItem', error);
+        res.status(500.json({message: 'An error occurred at add new list item'}));
+    })
+})
 
 const port = 4040;
 app.listen(port, () => console.log(`Anna's server listening on ${port}!`))
